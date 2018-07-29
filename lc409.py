@@ -1,15 +1,11 @@
 def solve(s):
-    dic = {}
-    for c in s:
-        dic[c] = dic.get(c, 0) + 1
-
-    res = 0
-    odd = 0
-    for v in dic.values():
-        res += v//2
-        if v%2: odd = 1
-
-    return odd + (2*res)
+    import collections
+    ans = 0
+    for v in collections.Counter(s).values():
+        ans += v // 2 * 2
+        if ans % 2 == 0 and v % 2 == 1:
+            ans += 1
+    return ans
 
 
 arr1 = ["abccccdd"]
