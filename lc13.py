@@ -1,14 +1,13 @@
 def solve(s):
-    symb = ('I', 'V', 'X', 'L', 'C', 'D', 'M')
-    num = (1, 5, 10, 50, 100, 500, 1000)
+    dic = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
     ans = 0
-    last = -1
+    last = 99999
     for c in s:
-        idx = symb.index(c)
-        ans += num[idx]
-        if last > -1 and last < idx:
-            ans -= 2 * num[last]
-        last = idx
+        num = dic[c]
+        ans += num
+        if last < num:
+            ans -= 2*last
+        last = num
     return ans
 
 
